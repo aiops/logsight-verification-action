@@ -1,0 +1,39 @@
+name: 'logsight-init-action'
+description: 'Quality gate that verifies a new deployment compared to the previous deployment using AI-powered log analytics.'
+inputs:
+  github_token:
+    description: 'Github token'
+    required: true
+  username:
+    description: 'Basic auth username.'
+    required: true
+  password:
+    description: 'Basic auth password.'
+    required: true
+  application_id:
+    description: 'IDs of logsight application.'
+    required: true
+  baseline_tag:
+    description: 'Tag that refers to the baseline version (e.g., already running deployment in production'
+    required: true
+  compare_tag:
+    description: 'Tag that refers to the compare version (e.g., the one that you want to check currently)'
+    required: true
+  risk_threshold:
+    description: 'Threshold for the risk score (goes from 0 to 100)'
+    required: false
+    default: 50
+outputs:
+  verification_result:
+    description: 'Result from the log verification quality gate check.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token}}
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.application_id }}
+    - ${{ inputs.baseline_tag }}
+    - ${{ inputs.compare_tag }}
+    - ${{ inputs.risk_threshold }}
