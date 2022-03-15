@@ -1,3 +1,10 @@
+<a href="https://logsight.ai/"><img src="https://logsight.ai/assets/img/logol.png" width="150"/></a>
+
+**Your Ally for Intelligent DevOps Pipelines**
+
+logsight.ai infuses deep learning and AI-powered analytics to enable continuous software delivery and proactive troubleshooting
+
+
 # log-verification-action
 
 This action compares logs from a new deployment of a service with the logs from the previous running deployment using
