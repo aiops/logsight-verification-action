@@ -1,26 +1,31 @@
 #!/bin/bash
 
-username=$1
-password=$2
-inputName=$3
-applicationId=$4
-tag=$5
-message=$6
-host=$7
-port=$8
-basicAuthToken=`echo -n $username:$password | base64`
+inputName=$1
+matchPattern=$2
+applicationId=$3
+tag=$4
+message=$5
+host=$6
+port=$7
+logsightUsername=$8
+logsightPassword=$9
+
+
 echo "[INPUT]
     Name $inputName
 [FILTER]
     Name modify
-    Match *
+    Match $matchPattern
     Add applicationId $applicationId
     Add tag $tag
     Rename $message message
-    Add basicAuthToken $basicAuthToken
 [OUTPUT]
     Name http
     Host $host
     Port $port
-    Format json_lines
-    json_date_format iso8601"
+    http_User $logsightUser
+    http_Passwd $logsightPassword
+    uri /api/v1/logs/singles
+    Format json
+    json_date_format iso8601
+    json_date_key timestamp"
