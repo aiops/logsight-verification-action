@@ -26,7 +26,7 @@ Overview
 
 def create_github_issue(verification_report):
     # extracting all the input from environments
-    title = "Log verification report " + os.environ['INPUT_BASELINE_TAG'] + " : " + os.environ['INPUT_BASELINE_TAG']
+    title = "Log verification report " + os.environ['INPUT_BASELINE_TAG'][:6] + " : " + os.environ['INPUT_BASELINE_TAG'][:6]
     token = os.environ['INPUT_GITHUB_TOKEN']
     labels = 'log-verification'
     assignees = os.environ['GITHUB_ACTOR']
