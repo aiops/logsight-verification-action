@@ -23,7 +23,7 @@ echo "[INPUT]
     Name http
     Host $host
     Port $port
-    http_User $logsightUser
+    http_User $logsightUsername
     http_Passwd $logsightPassword
     uri /api/v1/logs/singles
     Format json
