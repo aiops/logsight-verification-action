@@ -25,6 +25,7 @@ echo "[INPUT]
     Port $port
     http_User $logsightUsername
     http_Passwd $logsightPassword
+    tls On
     uri /api/v1/logs/singles
     Format json
     json_date_format iso8601
