@@ -1,7 +1,7 @@
 #!/bin/bash
 
 inputName=$1
-$fileLocation=$2
+fileLocation=$2
 matchPattern=$3
 applicationId=$4
 tag=$5
