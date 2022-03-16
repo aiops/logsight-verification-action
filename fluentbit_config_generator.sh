@@ -9,7 +9,7 @@ message=$6
 host=$7
 port=$8
 logsightUsername=$9
-logsightPassword=$10
+logsightPassword=${10}
 
 
 echo "[INPUT]
