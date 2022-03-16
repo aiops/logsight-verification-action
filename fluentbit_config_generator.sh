@@ -16,6 +16,7 @@ echo "[INPUT]
     Name $inputName
     Path $fileLocation
     multiline.parser  docker, cri
+    DB /tail_docker.db
 [FILTER]
     Name modify
     Match $matchPattern
