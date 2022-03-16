@@ -1,18 +1,21 @@
 #!/bin/bash
 
 inputName=$1
-matchPattern=$2
-applicationId=$3
-tag=$4
-message=$5
-host=$6
-port=$7
-logsightUsername=$8
-logsightPassword=$9
+$fileLocation=$2
+matchPattern=$3
+applicationId=$4
+tag=$5
+message=$6
+host=$7
+port=$8
+logsightUsername=$9
+logsightPassword=$10
 
 
 echo "[INPUT]
     Name $inputName
+    Path $fileLocation
+    multiline.parser  docker, cri
 [FILTER]
     Name modify
     Match $matchPattern
