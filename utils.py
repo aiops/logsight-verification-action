@@ -11,26 +11,35 @@ def create_verification_report(verification_result, baseline_tag, compare_tag):
 
 ## Report
 
-### [:page_with_curl: :bar_chart: :link: Detailed online report]({verification_result['link']})
+Github actor    : {github_actor}
+Workflow        : {github_workflow}
+Baseline branch : {github_branch}
+Baseline tag    : {baseline_tag}
+Compare branch  : {github_branch}
+Compare tag     : {compare_tag}
+#### [:page_with_curl: :bar_chart: Detailed online report :link:]({verification_result['link']})
 
-Github actor : {github_actor}
-Workflow     : {github_workflow}
-Baseline tag : {github_branch} {baseline_tag}
-Compare tag  : {github_branch} {compare_tag}
+#### Deployment risk
+#### 🔴 {verification_result['risk']}%
 
-### Deployment risk
-### 🔴 {verification_result['risk']}%
+#### Result Overview
 
-### Result Overview
+| Name       | Value |
+| :---        |    :----:   |          ---: |
+| Total log count      |   {verification_result['totalLogCount']}     |
+| Baseline log count   |   {verification_result['baselineLogCount']}  | 
+| Compare log count    |   {verification_result['candidateLogCount']}  | 
+| Change from compare to baseline  |   {verification_result['candidateChangePercentage']}%  | 
 
-- Total log count       : {verification_result['totalLogCount']}
-- Baseline log count    : {verification_result['baselineLogCount']}
-- Compare log count     : {verification_result['candidateLogCount']}
-- Change percentage     : {verification_result['candidateChangePercentage']}%
-- Added states total    : :heavy_plus_sign: {verification_result['addedStatesTotalCount']} (🔴 {verification_result['addedStatesFaultPercentage']}% Fault, :green_circle: {verification_result['addedStatesReportPercentage']}% Report )
-- Deleted states total  : {verification_result['deletedStatesTotalCount']} (🔴 {verification_result['deletedStatesFaultPercentage']}% Fault, :green_circle: {verification_result['deletedStatesReportPercentage']}% Report)
-- Freq. change states   : {verification_result['frequencyChangeTotalCount']} (🔴 {verification_result['frequencyChangeFaultPercentage']}% Fault, :green_circle: {verification_result['frequencyChangeReportPercentage']}% Report)
-- Recurring states total: {verification_result['recurringStatesTotalCount']} (🔴 {verification_result['recurringStatesFaultPercentage']}% Fault, :green_circle: {verification_result['recurringStatesReportPercentage']}% Report)
+#### State analysis
+
+| Name       | Total | 🔴 Failed % | :green_circle: Report % |
+| :---        |    :----:   |          ---: |          ---: |
+| :arrow_right: Added states    |   {verification_result['addedStatesTotalCount']}     | {verification_result['addedStatesFaultPercentage']} | : {verification_result['addedStatesReportPercentage']} |
+|  :arrow_left: Deleted states   |   {verification_result['deletedStatesTotalCount']} | {verification_result['deletedStatesFaultPercentage']} | : {verification_result['addedStatesReportPercentage']} |
+| :arrow_right_hook: Recurring states |   {verification_result['recurringStatesTotalCount']}  | 
+| :arrows_counterclockwise: Freq. change states    |    {verification_result['frequencyChangeTotalCount']}  | :arrow_up: {verification_result['recurringStatesFaultPercentage']['increase']} :arrow_down: {verification_result['recurringStatesFaultPercentage']['decrease']} |  :arrow_up: {verification_result['recurringStatesReportPercentage']['increase']} :arrow_down: {verification_result['recurringStatesReportPercentage']['decrease']}  |
+
     """
     return report
 
