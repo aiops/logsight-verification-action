@@ -11,16 +11,19 @@ def create_verification_report(verification_result, baseline_tag, candidate_tag)
 
 ## Report
 
-Github actor    : {github_actor}
-Workflow        : {github_workflow}
-Baseline branch : {github_branch}
-Baseline tag    : {baseline_tag}
-Candidate branch  : {github_branch}
-Candidate tag     : {candidate_tag}
+| Name       | Value |
+| :---        |    :----:   |  
+| Github actor      |   {github_actor}     |
+| Workflow     |   {github_workflow}  | 
+| Baseline branch    |   {github_branch}  | 
+| Baseline tag  |   {baseline_tag}  | 
+| Candidate branch  |   {github_branch} | 
+| Candidate tag  |    {candidate_tag}  | 
+
 #### [:page_with_curl: :bar_chart: Detailed online report :link:]({verification_result['link']})
 
 #### Deployment risk
-#### 🔴 {verification_result['risk']}%
+#### :zap: {verification_result['risk']}%
 
 #### Result Overview
 
