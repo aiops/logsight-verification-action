@@ -4,7 +4,7 @@
 # echo "Using options $INPUT_USERNAME $INPUT_PASSWORD $INPUT_APPLICATION_ID $INPUT_BASELINE_TAG $INPUT_COMPARE_TAG $INPUT_RISK_THRESHOLD  $GITHUB_TOKEN"
 
 # Runs misspell-fixes:
-output=$(python3 /code/main.py --username $INPUT_USERNAME --password $INPUT_PASSWORD --application_id $INPUT_APPLICATION_ID --baseline_tag $INPUT_BASELINE_TAG --compare_tag $INPUT_COMPARE_TAG --risk_threshold $INPUT_RISK_THRESHOLD)
+output=$(python3 /code/main.py --username "$INPUT_USERNAME" --password "$INPUT_PASSWORD" --application_id "$INPUT_APPLICATION_ID" --baseline_tag "$INPUT_BASELINE_TAG" --compare_tag "$INPUT_COMPARE_TAG" --risk_threshold "$INPUT_RISK_THRESHOLD")
 status="$?"
 #
 ## Sets the output variable for GitHub Action API:
