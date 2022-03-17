@@ -29,6 +29,7 @@ logsight.ai [Stage Verifier.](https://docs.logsight.ai/#/monitor_deployments/sta
 ## Outputs
 
 #### `verification_result`
+if the verification result fails then a GitHub issue will be created.
 
 ## Example usage
 
