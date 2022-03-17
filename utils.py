@@ -2,24 +2,35 @@ import os
 from github import Github
 
 def create_verification_report(verification_result, baseline_tag, compare_tag):
+    github_branch = os.environ['GITHUB_REF']
+    github_actor = os.environ['GITHUB_ACTOR']
+    github_workflow = os.environ['GITHUB_WORKFLOW']
     report = f"""
+<a href="https://logsight.ai/"><img src="https://logsight.ai/assets/img/logol.png" width="120"/></a>
+<a href="https://docs.logsight.ai/#/">Docs</a>
+
 ## Report
 
-[Detailed online report]({verification_result['link']})
+### [:page_with_curl: :bar_chart: :link: Detailed online report]({verification_result['link']})
 
-Baseline tag: {baseline_tag}
-Compare tag: {compare_tag}
-Result
-+ Deployment failure risk 🔴: {verification_result['risk']}%
-Overview
-- Total log count: {verification_result['totalLogCount']}
-- Baseline log count: {verification_result['baselineLogCount']}
-- Compare log count: {verification_result['candidateLogCount']}
-- Change percentage: {verification_result['candidateChangePercentage']}%
-- Added states total: {verification_result['addedStatesTotalCount']} ({verification_result['addedStatesFaultPercentage']}% Fault 🔴, {verification_result['addedStatesReportPercentage']}% Report)
-- Deleted states total: {verification_result['deletedStatesTotalCount']} ({verification_result['deletedStatesFaultPercentage']}% Fault 🔴, {verification_result['deletedStatesReportPercentage']}% Report)
-- Frequency change states: {verification_result['frequencyChangeTotalCount']} ({verification_result['frequencyChangeFaultPercentage']}% Fault 🔴, {verification_result['frequencyChangeReportPercentage']}% Report)
-- Recurring states total: {verification_result['recurringStatesTotalCount']} ({verification_result['recurringStatesFaultPercentage']}% Fault 🔴, {verification_result['recurringStatesReportPercentage']}% Report)
+Github actor : {github_actor}
+Workflow     : {github_workflow}
+Baseline tag : {github_branch} {baseline_tag}
+Compare tag  : {github_branch} {compare_tag}
+
+### Deployment risk
+### 🔴 {verification_result['risk']}%
+
+### Result Overview
+
+- Total log count       : {verification_result['totalLogCount']}
+- Baseline log count    : {verification_result['baselineLogCount']}
+- Compare log count     : {verification_result['candidateLogCount']}
+- Change percentage     : {verification_result['candidateChangePercentage']}%
+- Added states total    : :heavy_plus_sign: {verification_result['addedStatesTotalCount']} (🔴 {verification_result['addedStatesFaultPercentage']}% Fault, :green_circle: {verification_result['addedStatesReportPercentage']}% Report )
+- Deleted states total  : {verification_result['deletedStatesTotalCount']} (🔴 {verification_result['deletedStatesFaultPercentage']}% Fault, :green_circle: {verification_result['deletedStatesReportPercentage']}% Report)
+- Freq. change states   : {verification_result['frequencyChangeTotalCount']} (🔴 {verification_result['frequencyChangeFaultPercentage']}% Fault, :green_circle: {verification_result['frequencyChangeReportPercentage']}% Report)
+- Recurring states total: {verification_result['recurringStatesTotalCount']} (🔴 {verification_result['recurringStatesFaultPercentage']}% Fault, :green_circle: {verification_result['recurringStatesReportPercentage']}% Report)
     """
     return report
 
