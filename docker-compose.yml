@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  fluent-bit:
+    image: fluent/fluent-bit
+    volumes:
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - /var/lib/docker/containers:/containers
+    network_mode: "host"
+    logging:
+      driver: none
