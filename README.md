@@ -21,9 +21,7 @@ logsight.ai [Stage Verifier.](https://docs.logsight.ai/#/monitor_deployments/sta
 **Required**  IDs of logsight application.
 #### `baseline_tag`
 **Required**  Tag that refers to the baseline version (e.g., already running deployment in production.
-#### `compare_tag`
-**Required**  Tag that refers to the compare version (e.g., the one that you want to check currently).
-#### `compare_tag`
+#### `candidate_tag`
 **Required**  Tag that refers to the compare version (e.g., the one that you want to check currently).
 
 ## Outputs
@@ -41,6 +39,6 @@ with:
   password: mypassword
   application_id: {{ steps.logsight-init.outputs.application-id }}
   baseline_tag: {{github.event.before}}
-  compare_tag: {{github.sha}}
+  candidate_tag: {{github.sha}}
   risk_threshold: "50"  
 ```

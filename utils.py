@@ -1,7 +1,7 @@
 import os
 from github import Github
 
-def create_verification_report(verification_result, baseline_tag, compare_tag):
+def create_verification_report(verification_result, baseline_tag, candidate_tag):
     github_branch = os.environ['GITHUB_REF']
     github_actor = os.environ['GITHUB_ACTOR']
     github_workflow = os.environ['GITHUB_WORKFLOW']
@@ -15,8 +15,8 @@ Github actor    : {github_actor}
 Workflow        : {github_workflow}
 Baseline branch : {github_branch}
 Baseline tag    : {baseline_tag}
-Compare branch  : {github_branch}
-Compare tag     : {compare_tag}
+Candidate branch  : {github_branch}
+Candidate tag     : {candidate_tag}
 #### [:page_with_curl: :bar_chart: Detailed online report :link:]({verification_result['link']})
 
 #### Deployment risk

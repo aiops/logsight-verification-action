@@ -16,7 +16,7 @@ inputs:
   baseline_tag:
     description: 'Tag that refers to the baseline version (e.g., already running deployment in production'
     required: true
-  compare_tag:
+  candidate_tag:
     description: 'Tag that refers to the compare version (e.g., the one that you want to check currently)'
     required: true
   risk_threshold:
@@ -35,5 +35,5 @@ runs:
     - ${{ inputs.password }}
     - ${{ inputs.application_id }}
     - ${{ inputs.baseline_tag }}
-    - ${{ inputs.compare_tag }}
+    - ${{ inputs.candidate_tag }}
     - ${{ inputs.risk_threshold }}
