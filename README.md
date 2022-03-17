@@ -29,27 +29,6 @@ logsight.ai [Stage Verifier.](https://docs.logsight.ai/#/monitor_deployments/sta
 ## Outputs
 
 #### `verification_result`
-The verification result is a report as following:
-```
-
-[Detailed online report](URL with details fromt the report)
-
-Baseline tag: bcb9b6784d93136d27c4ba30a35618836a68087c
-Compare tag: 42f7bf7cc759b5320f1ebd9c200e456ea1d29571
-Result
-+ Deployment failure risk 🔴: 0%
-Overview
-- Total log count: 0
-- Baseline log count: 0
-- Compare log count: 0
-- Change percentage: 0.0%
-- Added states total: 0 (0.0% Fault 🔴, 0.0% Report)
-- Deleted states total: 0 (0.0% Fault 🔴, 0.0% Report)
-- Frequency change states: 0 (None% Fault 🔴, None% Report)
-- Recurring states total: 0 (0.0% Fault 🔴, 0.0% Report)
-```
-
-Read more about the Stage Verifier Output at [logsight.ai docs.](https://docs.logsight.ai/#/monitor_deployments/using_the_rest_api?id=verify)
 
 ## Example usage
 
