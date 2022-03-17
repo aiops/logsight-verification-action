@@ -6,7 +6,7 @@ logsight.ai infuses deep learning and AI-powered analytics to enable continuous 
 
 ## Stage Verifier Report
 
-###[:page_with_curl: :bar_chart: Detailed online report]({verification_result['link']})
+### [:page_with_curl: :bar_chart: Detailed online report]({verification_result['link']})
 
 Baseline tag: {baseline_tag}
 Compare tag: {compare_tag}
