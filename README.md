@@ -4,26 +4,6 @@
 
 logsight.ai infuses deep learning and AI-powered analytics to enable continuous software delivery and proactive troubleshooting
 
-## Stage Verifier Report
-
-### [:page_with_curl: :bar_chart: Detailed online report]({verification_result['link']})
-
-Baseline tag: {baseline_tag}
-Compare tag: {compare_tag}
-Result
-+ Deployment failure risk 🔴: {verification_result['risk']}%
-Overview
-- Total log count: {verification_result['totalLogCount']}
-- Baseline log count: {verification_result['baselineLogCount']}
-- Compare log count: {verification_result['candidateLogCount']}
-- Change percentage: {verification_result['candidateChangePercentage']}%
-- Added states total: {verification_result['addedStatesTotalCount']} ({verification_result['addedStatesFaultPercentage']}% Fault 🔴, {verification_result['addedStatesReportPercentage']}% Report)
-- Deleted states total: {verification_result['deletedStatesTotalCount']} ({verification_result['deletedStatesFaultPercentage']}% Fault 🔴, {verification_result['deletedStatesReportPercentage']}% Report)
-- Frequency change states: {verification_result['frequencyChangeTotalCount']} ({verification_result['frequencyChangeFaultPercentage']}% Fault 🔴, {verification_result['frequencyChangeReportPercentage']}% Report)
-- Recurring states total: {verification_result['recurringStatesTotalCount']} ({verification_result['recurringStatesFaultPercentage']}% Fault 🔴, {verification_result['recurringStatesReportPercentage']}% Report)
-
-
-
 
 # log-verification-action
 
