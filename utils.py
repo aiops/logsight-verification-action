@@ -37,8 +37,8 @@ Compare tag     : {compare_tag}
 | :---        |    :----:   |          ---: |          ---: |
 | :arrow_right: Added states    |   {verification_result['addedStatesTotalCount']}     | {verification_result['addedStatesFaultPercentage']} | : {verification_result['addedStatesReportPercentage']} |
 |  :arrow_left: Deleted states   |   {verification_result['deletedStatesTotalCount']} | {verification_result['deletedStatesFaultPercentage']} | : {verification_result['addedStatesReportPercentage']} |
-| :arrow_right_hook: Recurring states |   {verification_result['recurringStatesTotalCount']}  |  {verification_result['recurringStatesFaultPercentage']} |  {verification_result['recurringStatesReportPercentage']}| 
-| :arrows_counterclockwise: Freq. change states    |    {verification_result['frequencyChangeTotalCount']}  | :arrow_up: {verification_result['recurringStatesFaultPercentage']['increase']} :arrow_down: {verification_result['recurringStatesFaultPercentage']['decrease']} |  :arrow_up: {verification_result['recurringStatesReportPercentage']['increase']} :arrow_down: {verification_result['recurringStatesReportPercentage']['decrease']}  |
+| :arrow_right_hook: Recurring states |   {verification_result['recurringStatesTotalCount']}  |  {verification_result['recurringStatesFaultPercentage']['increase']} |  {verification_result['recurringStatesReportPercentage']['decrease']}| 
+| :arrows_counterclockwise: Freq. change states    |    {verification_result['frequencyChangeTotalCount']}  | :arrow_up: {verification_result['frequencyChangeFaultPercentage']} :arrow_down: {verification_result['frequencyChangeFaultPercentage']} |  :arrow_up: {verification_result['frequencyChangeReportPercentage']['increase']} :arrow_down: {verification_result['frequencyChangeReportPercentage']['decrease']}  |
 
     """
     return report
