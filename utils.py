@@ -25,7 +25,7 @@ Compare tag     : {compare_tag}
 #### Result Overview
 
 | Name       | Value |
-| :---        |    :----:   |          ---: |
+| :---        |    :----:   |  
 | Total log count      |   {verification_result['totalLogCount']}     |
 | Baseline log count   |   {verification_result['baselineLogCount']}  | 
 | Compare log count    |   {verification_result['candidateLogCount']}  | 
