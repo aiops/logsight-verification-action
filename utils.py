@@ -49,7 +49,7 @@ def create_verification_report(verification_result, baseline_tag, candidate_tag)
 
 def create_github_issue(verification_report):
     # extracting all the input from environments
-    title = "Stage Verifier logsight.ai [baseline: " + os.environ['INPUT_BASELINE_TAG'][:6] + " | candidate:" + os.environ['INPUT_CANDIDATE_TAG'][:6]
+    title = "Stage Verifier logsight.ai [baseline: " + os.environ['INPUT_BASELINE_TAG'][:6] + " | candidate:" + os.environ['INPUT_CANDIDATE_TAG'][:6] + "]"
     token = os.environ['INPUT_GITHUB_TOKEN']
     labels = 'log-verification'
     assignees = os.environ['GITHUB_ACTOR']
