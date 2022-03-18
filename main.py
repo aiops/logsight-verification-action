@@ -40,12 +40,12 @@ compare = LogsightCompare(user.user_id, user.token)
 
 while True:
     try:
-        flag = False
         r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG, flush_id=flush_id)
         break
     except logsight.exceptions.Conflict as conflict:
         time.sleep(SECONDS_SLEEP)
     except Exception as e:
+        flag = False
         application_tags = [tag['tag'] for tag in compare.tags(app_id=APPLICATION_ID)]
         if CANDIDATE_TAG not in application_tags and BASELINE_TAG not in application_tags:
             print("Both tags do not exist! We cant perform verification!")
