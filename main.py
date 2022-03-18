@@ -42,6 +42,10 @@ while True:
     try:
         flag = False
         r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG, flush_id=flush_id)
+        break
+    except logsight.exceptions.Conflict as conflict:
+        time.sleep(SECONDS_SLEEP)
+    except Exception as e:
         application_tags = [tag['tag'] for tag in compare.tags(app_id=APPLICATION_ID)]
         if CANDIDATE_TAG not in application_tags and BASELINE_TAG not in application_tags:
             print("Both tags do not exist! We cant perform verification!")
@@ -53,11 +57,12 @@ while True:
             flag = True
             CANDIDATE_TAG = copy.deepcopy(BASELINE_TAG)
         if flag:
-            r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG,
+            try:
+                r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG,
                                 flush_id=flush_id)
-        break
-    except logsight.exceptions.Conflict:
-        time.sleep(SECONDS_SLEEP)
+            except Exception as e:
+                exit(1)
+
 report = create_verification_report(verification_result=r, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG)
 print(report)
 if r['risk'] >= RISK_THRESHOLD:
