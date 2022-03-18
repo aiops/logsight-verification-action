@@ -34,6 +34,7 @@ user = LogsightUser(email=EMAIL, password=PASSWORD)
 end_stream_log_entry = {'timestamp': datetime.now(tz=tzlocal()).isoformat(), 'message': "End stream."}
 g = LogsightLogs(user.token)
 r = g.send(APPLICATION_ID, [end_stream_log_entry], tag='end_stream')
+time.sleep(5)
 flush_id = g.flush(r['receiptId'])['flushId']
 compare = LogsightCompare(user.user_id, user.token)
 
