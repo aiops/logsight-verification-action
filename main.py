@@ -36,18 +36,24 @@ g = LogsightLogs(user.token)
 r = g.send(APPLICATION_ID, [end_stream_log_entry], tag='end_stream')
 flush_id = g.flush(r['receiptId'])['flushId']
 compare = LogsightCompare(user.user_id, user.token)
-# application_tags = [tag['tag'] for tag in compare.tags(app_id=APPLICATION_ID)]
-# if CANDIDATE_TAG not in application_tags and BASELINE_TAG not in application_tags:
-#     print("Both tags do not exist!")
-#     exit(1)
-# if BASELINE_TAG not in application_tags:
-#     BASELINE_TAG = copy.deepcopy(CANDIDATE_TAG)
-# if CANDIDATE_TAG not in application_tags:
-#     CANDIDATE_TAG = copy.deepcopy(BASELINE_TAG)
-# time.sleep(SECONDS_SLEEP)
+
 while True:
     try:
+        flag = False
         r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG, flush_id=flush_id)
+        application_tags = [tag['tag'] for tag in compare.tags(app_id=APPLICATION_ID)]
+        if CANDIDATE_TAG not in application_tags and BASELINE_TAG not in application_tags:
+            print("Both tags do not exist!")
+            exit(1)
+        if BASELINE_TAG not in application_tags:
+            flag = True
+            BASELINE_TAG = copy.deepcopy(CANDIDATE_TAG)
+        if CANDIDATE_TAG not in application_tags:
+            flag = True
+            CANDIDATE_TAG = copy.deepcopy(BASELINE_TAG)
+        if flag:
+            r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG,
+                                flush_id=flush_id)
         break
     except logsight.exceptions.Conflict:
         time.sleep(SECONDS_SLEEP)
