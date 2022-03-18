@@ -51,18 +51,10 @@ while True:
             print("Both tags do not exist! We cant perform verification!")
             exit(0)
         if BASELINE_TAG not in application_tags:
-            flag = True
             BASELINE_TAG = copy.deepcopy(CANDIDATE_TAG)
         if CANDIDATE_TAG not in application_tags:
-            flag = True
             CANDIDATE_TAG = copy.deepcopy(BASELINE_TAG)
-        if flag:
-            try:
-                r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG,
-                                flush_id=flush_id)
-            except Exception as e:
-                print(e)
-                exit(1)
+        time.sleep(SECONDS_SLEEP)
 
 report = create_verification_report(verification_result=r, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG)
 print(report)
