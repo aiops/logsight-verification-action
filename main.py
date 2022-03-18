@@ -61,6 +61,7 @@ while True:
                 r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG,
                                 flush_id=flush_id)
             except Exception as e:
+                print(e)
                 exit(1)
 
 report = create_verification_report(verification_result=r, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG)
