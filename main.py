@@ -11,7 +11,7 @@ from logsight.compare import LogsightCompare
 import argparse
 from utils import create_verification_report, create_github_issue
 
-SECONDS_SLEEP = 5
+SECONDS_SLEEP = 3
 
 # Instantiate the parser
 parser = argparse.ArgumentParser(description='Logsight Init')
@@ -34,7 +34,7 @@ user = LogsightUser(email=EMAIL, password=PASSWORD)
 end_stream_log_entry = {'timestamp': datetime.now(tz=tzlocal()).isoformat(), 'message': "End stream."}
 g = LogsightLogs(user.token)
 r = g.send(APPLICATION_ID, [end_stream_log_entry], tag='end_stream')
-time.sleep(5)
+time.sleep(SECONDS_SLEEP)
 flush_id = g.flush(r['receiptId'])['flushId']
 compare = LogsightCompare(user.user_id, user.token)
 
@@ -44,8 +44,8 @@ while True:
         r = compare.compare(app_id=APPLICATION_ID, baseline_tag=BASELINE_TAG, candidate_tag=CANDIDATE_TAG, flush_id=flush_id)
         application_tags = [tag['tag'] for tag in compare.tags(app_id=APPLICATION_ID)]
         if CANDIDATE_TAG not in application_tags and BASELINE_TAG not in application_tags:
-            print("Both tags do not exist!")
-            exit(1)
+            print("Both tags do not exist! We cant perform verification!")
+            exit(0)
         if BASELINE_TAG not in application_tags:
             flag = True
             BASELINE_TAG = copy.deepcopy(CANDIDATE_TAG)
