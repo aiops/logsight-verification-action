@@ -73,6 +73,5 @@ def create_github_issue(verification_report):
     issue = repo.create_issue(
         title=title,
         body=verification_report,
-        assignees=assignees,
         labels=labels
     )
