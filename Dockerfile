@@ -4,8 +4,9 @@
 FROM logsight/logsight-verification:latest
 
 # copy code
-COPY ./entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+WORKDIR /code
+COPY ./entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
