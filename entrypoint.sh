@@ -2,9 +2,6 @@
 
 # Diagnostic output:
 echo "Using options $INPUT_USERNAME $INPUT_PASSWORD $INPUT_APPLICATION_ID $INPUT_BASELINE_TAG $INPUT_CANDIDATE_TAG $INPUT_RISK_THRESHOLD  $GITHUB_TOKEN"
-ls /
-ls /code
-pwd
 # Runs misspell-fixes:
 output=$(python3 /code/main.py --username "$INPUT_USERNAME" --password "$INPUT_PASSWORD" --application_id "$INPUT_APPLICATION_ID" --baseline_tag "$INPUT_BASELINE_TAG" --candidate_tag "$INPUT_CANDIDATE_TAG" --risk_threshold "$INPUT_RISK_THRESHOLD")
 status="$?"

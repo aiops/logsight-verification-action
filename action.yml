@@ -27,13 +27,7 @@ outputs:
   verification_result:
     description: 'Result from the log verification quality gate check.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.github_token}}
-    - ${{ inputs.username }}
-    - ${{ inputs.password }}
-    - ${{ inputs.application_id }}
-    - ${{ inputs.baseline_tag }}
-    - ${{ inputs.candidate_tag }}
-    - ${{ inputs.risk_threshold }}
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - run:  $GITHUB_ACTION_PATH/entrypoint.sh ${{ inputs.username }} ${{ inputs.password }} ${{ inputs.application_id }} ${{ inputs.baseline_tag }} ${{ inputs.candidate_tag }} ${{ inputs. risk_threshold }} $GITHUB_TOKEN
