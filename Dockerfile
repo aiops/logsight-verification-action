@@ -1,7 +1,7 @@
 # docker build -t logsight/logsight-result-api .
 
 # set base image (host OS)
-FROM logsight/logsight-verification:latest
+FROM logsight/logsight-verification:v1.0.0
 
 # copy code
 COPY ./entrypoint.sh /
