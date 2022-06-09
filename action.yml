@@ -10,8 +10,11 @@ inputs:
   password:
     description: 'Basic auth password.'
     required: true
-  application_id:
-    description: 'IDs of logsight application.'
+  application_name:
+    description: 'Name of logsight application.'
+    required: true
+  baseline_tags:
+    description: 'Tags that refers to the baseline version (e.g., already running deployment in production. E.g., {"version": "v1", "applicationName": "myapp"}.'
     required: true
   baseline_tag:
     description: 'Tag that refers to the baseline version (e.g., already running deployment in production'
@@ -30,10 +33,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.github_token}}
+    - ${{ inputs.github_token }}
     - ${{ inputs.username }}
     - ${{ inputs.password }}
-    - ${{ inputs.application_id }}
+    - ${{ inputs.application_name }}
     - ${{ inputs.baseline_tag }}
     - ${{ inputs.candidate_tag }}
     - ${{ inputs.risk_threshold }}
