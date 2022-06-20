@@ -17,10 +17,10 @@ logsight.ai [Stage Verifier.](https://docs.logsight.ai/#/monitor_deployments/sta
 **Required**  Basic auth username.
 #### `password`
 **Required**  Basic auth password.
-#### `application_id`
-**Required**  IDs of logsight application.
+#### `repository`
+**Required**  Name of the repository that is analyzed.
 #### `baseline_tag`
-**Required**  Tag that refers to the baseline version (e.g., already running deployment in production.
+**Required**  Tag that refers to the baseline version (e.g., already running deployment in production).
 #### `candidate_tag`
 **Required**  Tag that refers to the compare version (e.g., the one that you want to check currently).
 
@@ -37,7 +37,7 @@ with:
   github_token: {{ secrets.GITHUB_TOKEN }}
   username: admin
   password: mypassword
-  application_id: {{ steps.logsight-init.outputs.application-id }}
+  repository: {{ steps.logsight-init.outputs.application-id }}
   baseline_tag: {{github.event.before}}
   candidate_tag: {{github.sha}}
   risk_threshold: "50"  
