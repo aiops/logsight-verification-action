@@ -10,11 +10,8 @@ inputs:
   password:
     description: 'Basic auth password.'
     required: true
-  application_name:
-    description: 'Name of logsight application.'
-    required: true
-  baseline_tags:
-    description: 'Tags that refers to the baseline version (e.g., already running deployment in production. E.g., {"version": "v1", "applicationName": "myapp"}.'
+  repository:
+    description: 'Name of repository.'
     required: true
   baseline_tag:
     description: 'Tag that refers to the baseline version (e.g., already running deployment in production'
@@ -36,7 +33,7 @@ runs:
     - ${{ inputs.github_token }}
     - ${{ inputs.username }}
     - ${{ inputs.password }}
-    - ${{ inputs.application_name }}
+    - ${{ inputs.repository }}
     - ${{ inputs.baseline_tag }}
     - ${{ inputs.candidate_tag }}
     - ${{ inputs.risk_threshold }}
