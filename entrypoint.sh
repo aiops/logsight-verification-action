@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Diagnostic output:
-echo "Using options $INPUT_USERNAME $INPUT_PASSWORD $INPUT_APPLICATION_NAME $INPUT_BASELINE_TAG $INPUT_CANDIDATE_TAG $INPUT_RISK_THRESHOLD  $GITHUB_TOKEN"
+echo "Using options $INPUT_USERNAME $INPUT_PASSWORD $INPUT_REPOSITORY $INPUT_BASELINE_TAG $INPUT_CANDIDATE_TAG $INPUT_RISK_THRESHOLD  $GITHUB_TOKEN"
 # Runs misspell-fixes:
-output=$(python3 /code/main.py --username "$INPUT_USERNAME" --password "$INPUT_PASSWORD" --application_name "$INPUT_APPLICATION_NAME" --baseline_tags "$INPUT_BASELINE_TAG" --candidate_tags "$INPUT_CANDIDATE_TAG" --risk_threshold "$INPUT_RISK_THRESHOLD")
+output=$(python3 /code/main.py --username "$INPUT_USERNAME" --password "$INPUT_PASSWORD" --repository "$INPUT_REPOSITORY" --baseline_tag "$INPUT_BASELINE_TAG" --candidate_tag "$INPUT_CANDIDATE_TAG" --risk_threshold "$INPUT_RISK_THRESHOLD")
 status="$?"
 #
 ## Sets the output variable for GitHub Action API:
