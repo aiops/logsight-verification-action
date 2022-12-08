@@ -1,4 +1,4 @@
-name: 'logsight-init-action'
+name: 'logsight-verification-action'
 description: 'Quality gate that verifies a new deployment compared to the previous deployment using AI-powered log analytics.'
 inputs:
   github_token:
